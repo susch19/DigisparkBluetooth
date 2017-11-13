@@ -15,7 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sketch1.ino" />
+    <ClInclude Include="__vm\.sk6812.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
- 
+  <ItemGroup>
+    <None Include="sk6812FAB_LED.ino" />
+  </ItemGroup>
 </Project>

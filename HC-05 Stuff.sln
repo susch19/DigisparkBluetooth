@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Keyboard", "Keyboard.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bluetooth", "Bluetooth\Bluetooth.vcxproj", "{BE3958CA-2963-4169-8566-BEB8B94F3689}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Reprogram", "Reprogram\Reprogram.vcxproj", "{916549A7-C2D9-46D1-9717-1205F8B5E37D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sk6812FAB_LED", "sk6812\sk6812.vcxproj", "{54DBBCDB-0938-4AF5-A2DD-7BC73C3DEE26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{BE3958CA-2963-4169-8566-BEB8B94F3689}.Debug|x86.ActiveCfg = Debug|Win32
+		{BE3958CA-2963-4169-8566-BEB8B94F3689}.Debug|x86.Build.0 = Debug|Win32
+		{BE3958CA-2963-4169-8566-BEB8B94F3689}.Release|x86.ActiveCfg = Release|Win32
+		{BE3958CA-2963-4169-8566-BEB8B94F3689}.Release|x86.Build.0 = Release|Win32
+		{916549A7-C2D9-46D1-9717-1205F8B5E37D}.Debug|x86.ActiveCfg = Debug|Win32
+		{916549A7-C2D9-46D1-9717-1205F8B5E37D}.Debug|x86.Build.0 = Debug|Win32
+		{916549A7-C2D9-46D1-9717-1205F8B5E37D}.Release|x86.ActiveCfg = Release|Win32
+		{916549A7-C2D9-46D1-9717-1205F8B5E37D}.Release|x86.Build.0 = Release|Win32
+		{54DBBCDB-0938-4AF5-A2DD-7BC73C3DEE26}.Debug|x86.ActiveCfg = Debug|Win32
+		{54DBBCDB-0938-4AF5-A2DD-7BC73C3DEE26}.Debug|x86.Build.0 = Debug|Win32
+		{54DBBCDB-0938-4AF5-A2DD-7BC73C3DEE26}.Release|x86.ActiveCfg = Release|Win32
+		{54DBBCDB-0938-4AF5-A2DD-7BC73C3DEE26}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB97677E-330F-4A4B-874D-3EBA7502B6DD}
+	EndGlobalSection
+EndGlobal
