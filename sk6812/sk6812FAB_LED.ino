@@ -1,70 +1,81 @@
 
 #include <FAB_LED.h>
-#include <HID.h>
 
 // Declare the LED protocol and the port
-sk6812<D, 1>  strip;
+sk6812<D, 6>  strip;
 
 // How many pixels to control
-const int numPixels = 60;
+const int numPixels = 94;
 
 // How bright the LEDs will be (max 255)
 const uint8_t maxBrightness = 60;
 
 // The pixel array to display
-rgbw  pixels[numPixels] = {};
+grbw  pixels[numPixels] = {};
 
 int k = 0;
-
-void updateColors(int i, int rgb)
+int b = 0;
+uint8_t iter = 3;
+void setup()
 {
-	int r = rgb >> 16;
-	int g = (rgb >> 8) % 256;
-	int b = rgb % 256;
+	Serial.begin(921600);
+	Serial.setTimeout(100);
+	strip.clear(numPixels);
+}
 
-	if (r > 0) r = 255;
-	if (b > 0) b = 255;
-	if (g > 0) g = 255;
-
-	pixels[i - 1].g = 0; //Rot
-	pixels[i - 1].r = 0; //Rot
-	pixels[i - 1].b = 0; //Rot
-	for (int lop = 1; lop <= 10; lop++)
+void set_all_leds(char color_r, char color_b, char color_g, char color_w)
+{
+	for (int pixel_index = 0; pixel_index < numPixels; pixel_index++)
 	{
-		pixels[numPixels - lop].r = 0;
-		pixels[numPixels - lop].g = 0;
-		pixels[numPixels - lop].b = 0;
-		pixels[numPixels - lop].w = 0;
-	}
-	for (int o = i; o < i + 10; o++)
-	{
-		pixels[o].r = g; // grün
-		pixels[o].b = b; // blau
-		pixels[o].g = r; //Rot
-		pixels[o].w = 255;
-
+		pixels[pixel_index].r = color_r;
+		pixels[pixel_index].b = color_g;
+		pixels[pixel_index].g = color_b;
+		pixels[pixel_index].w = color_w;
 	}
 	strip.sendPixels(numPixels, pixels);
 }
 
-
-void setup()
-{
-	strip.clear(1000);
-}
-void loop()
+void blink_leds(char color_r, char color_b, char color_g, char color_w)
 {
 	for (int i = 0; i < 3; i++)
 	{
-		int t = 256 << i * 8;
-		for (int led = 0; led < numPixels; led++)
+		set_all_leds(color_r, color_b, color_g, color_w);
+		delay(200);
+		strip.clear(numPixels);
+		delay(200);
+	}
+}
+
+char readBuffer[numPixels * 5];
+void loop()
+{
+
+	if (Serial.available())
+	{
+		int count = Serial.read() * 5;
+		Serial.println("ACK");
+
+		int read_count = Serial.readBytes(readBuffer, count);
+
+		if (read_count == 0)
 		{
-			updateColors(led, t);
-			delay(5);
+			blink_leds(maxBrightness, 0, 0, 0);
 		}
+		Serial.println("ACK");
+
+		for (size_t i = 0; i < count; i++)
+		{
+			byte pos = readBuffer[i++];
+			pixels[pos].g = readBuffer[i++];
+			pixels[pos].r = readBuffer[i++];
+			pixels[pos].b = readBuffer[i++];
+			pixels[pos].w = readBuffer[i];
+		}
+		strip.sendPixels(numPixels, pixels);
 	}
 
-	/*if (k % numPixels == 0) {
-		strip.clear(numPixels);
-	}*/
+
+	return;
 }
+
+
